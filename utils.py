@@ -2,15 +2,18 @@ import argparse
 import sys
 
 from be_like_bill_generate import create_image, gui
-def main(args_i=0):
-    parse = argparse.ArgumentParser()
-    parse.description = 'generate mem'
-    parse.add_argument('--name', '-n', default='Билл')
-    parse.add_argument('--text', '-t', default=['он знает сколько будет 2 + 2'], nargs='*',
-                       help='create picture with your TEXT')
-    parse.add_argument('--interface', '-gui', action='store_true')
+from constants import VERSION
 
-    args = parse.parse_args(sys.argv[args_i:])
+
+def main(args_i=0):
+    parser = argparse.ArgumentParser()
+    parser.description = 'generate mem'
+    parser.add_argument('--name', '-n', default='Билл')
+    parser.add_argument('--text', '-t', default=['он знает сколько будет 2 + 2'], nargs='*',
+                       help='create picture with your TEXT')
+    parser.add_argument('--interface', '-gui', action='store_true')
+    parser.add_argument('--version', '-ver', action='version', version=VERSION)
+    args = parser.parse_args(sys.argv[args_i:])
     if args.interface:
         gui()
     else:
