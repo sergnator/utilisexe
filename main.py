@@ -4,7 +4,7 @@ import random
 import sys
 import string
 
-
+import constants
 from utils import main as generate_meme
 from constants import *
 from updater import check_update, download
