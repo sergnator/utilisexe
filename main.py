@@ -16,8 +16,8 @@ parser.add_argument('command', choices=commands, nargs='?')
 parser.add_argument('--version', '-ver', action='version', version=VERSION)
 parser.add_argument('--update', action='store_true')
 args = parser.parse_args(sys.argv[1:2])
-
 if args.update:
+
     current_version = check_update()
     if current_version:
         print(f'update {constants.VERSION.split()[1]} --> {current_version}. Are you sure(y/n):')
@@ -26,7 +26,8 @@ if args.update:
             sys.exit()
         download()
         sys.exit()
-args.command = args.command[0]
+
+args.command = args.command
 if args.command == 'randstr':
     parser = argparse.ArgumentParser(description='generate random string with length = count')
     parser.add_argument('--version', '-ver', action='version', version=VERSION)
@@ -98,3 +99,4 @@ elif args.command == 'delete':
     parser.add_argument('--file', '-f')
     args = parser.parse_args()
     os.remove(args.file)
+    print(1)
