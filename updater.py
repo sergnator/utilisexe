@@ -1,4 +1,4 @@
-import sys
+
 
 import requests
 import os
@@ -15,7 +15,7 @@ def check_update():
 
 
 def download():
-    os.rename('prgm.exe', 'prgm2.exe')
+    os.rename(__file__ + 'prgm.exe', 'prgm2.exe')
     content = requests.get(HREF_DOWNLOAD)
     with open('prgm.exe', 'wb') as f:
         f.write(content.content)
