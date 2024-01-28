@@ -15,8 +15,7 @@ def check_update():
 
 
 def download():
-    os.rename(sys.executable, 'prgm2.exe')
+    os.rename(sys.executable, '\\'.join(sys.executable.split('\\')[:-1]) + '\\' + 'prgm2.exe')
     content = requests.get(HREF_DOWNLOAD)
     with open('\\'.join(sys.executable.split('\\')[:-1]) + '\\' + 'prgm.exe', 'wb') as f:
         f.write(content.content)
-
