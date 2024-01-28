@@ -13,7 +13,7 @@ from updater import check_update, download
 commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete']
 
 if 'prgm2.exe' in os.listdir('\\'.join(sys.executable.split('\\')[:-1])):
-    os.remove('prgm2.exe')
+    os.remove('\\'.join(sys.executable.split('\\')[:-1]) + '\\' + 'prgm2.exe')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('command', choices=commands, nargs='?')
