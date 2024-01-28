@@ -11,7 +11,7 @@ from updater import check_update, download
 
 commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete']
 
-if 'prgm2.exe' in os.listdir():
+if 'prgm2.exe' in os.listdir(os.environ['Path']):
     os.remove('prgm2.exe')
 
 
