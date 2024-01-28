@@ -3,6 +3,7 @@ import os
 import random
 import sys
 import string
+from termcolor import colored
 
 import constants
 from utils import main as generate_meme
@@ -14,7 +15,6 @@ commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete']
 if 'prgm2.exe' in os.listdir('\\'.join(sys.executable.split('\\')[:-1])):
     os.remove('prgm2.exe')
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument('command', choices=commands, nargs='?')
 parser.add_argument('--version', '-ver', action='version', version=VERSION)
@@ -24,7 +24,8 @@ if args.update:
 
     current_version = check_update()
     if current_version:
-        print(f'update {constants.VERSION.split()[1]} --> {current_version}. Are you sure(y/n):')
+        print(
+            f'update {colored(constants.VERSION.split()[1], "red")} --> {colored(current_version, "green")}. Are you sure(y/n):')
         response = input()
         if response.lower() == 'n':
             sys.exit()
