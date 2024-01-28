@@ -10,8 +10,8 @@ from constants import *
 from updater import check_update, download
 
 commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete']
-
-if 'prgm2.exe' in os.listdir(os.environ['Path']):
+print(os.environ)
+if 'prgm2.exe' in os.listdir(sys.executable):
     os.remove('prgm2.exe')
 
 
