@@ -30,8 +30,9 @@ if args.update:
             sys.exit()
         download()
         sys.exit()
+    else:
+        print(f'you have last version: {current_version}')
 
-args.command = args.command
 if args.command == 'randstr':
     parser = argparse.ArgumentParser(description='generate random string with length = count')
     parser.add_argument('--version', '-ver', action='version', version=VERSION)
