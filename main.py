@@ -10,8 +10,8 @@ from constants import *
 from updater import check_update, download
 
 commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete']
-print(os.environ)
-if 'prgm2.exe' in os.listdir(sys.executable):
+
+if 'prgm2.exe' in os.listdir('\\'.join(sys.executable.split('\\')[:-1])):
     os.remove('prgm2.exe')
 
 
@@ -31,7 +31,7 @@ if args.update:
         download()
         sys.exit()
     else:
-        print(f'you have last version: {current_version}')
+        print(f'you have last version: {constants.VERSION}')
 
 if args.command == 'randstr':
     parser = argparse.ArgumentParser(description='generate random string with length = count')
