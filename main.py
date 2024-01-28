@@ -97,6 +97,5 @@ elif args.command == 'sort':
 elif args.command == 'delete':
     parser = argparse.ArgumentParser(description='delete file')
     parser.add_argument('--file', '-f')
-    args = parser.parse_args()
+    args = parser.parse_args(sys.argv[2:])
     os.remove(args.file)
-    print(1)
