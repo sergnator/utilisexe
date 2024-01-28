@@ -24,7 +24,7 @@ if args.update:
 
     current_version = check_update()
     if current_version:
-        print(f'update {constants.VERSION.split()[1]} --> {current_version}. Are you sure(y/n):')
+        print(f'update \003[32{constants.VERSION.split()[1]} --> \003[31{current_version}. Are you sure(y/n):')
         response = input()
         if response.lower() == 'n':
             sys.exit()
