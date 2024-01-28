@@ -2,15 +2,29 @@ import argparse
 import random
 import sys
 import string
+
+import constants
 from utils import main as generate_meme
 from constants import *
+from updater import check_update, download
 
 commands = ['randstr', 'mkmem', 'newns', 'sort']
 
 parser = argparse.ArgumentParser()
 parser.add_argument('command', choices=commands)
 parser.add_argument('--version', '-ver', action='version', version=VERSION)
+parser.add_argument('--update', action='store_true')
 args = parser.parse_args(sys.argv[1:2])
+
+if args.update:
+    current_version = check_update()
+    if current_version:
+        print(f'update {constants.VERSION} --> {current_version}. Are you sure(y/n):')
+        response = input()
+        if response.lower() == 'n':
+            sys.exit()
+        download()
+
 if args.command == 'randstr':
     parser = argparse.ArgumentParser(description='generate random string with length = count')
     parser.add_argument('--version', '-ver', action='version', version=VERSION)
