@@ -11,6 +11,10 @@ from updater import check_update, download
 
 commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete']
 
+if 'prgm2.exe' in os.listdir():
+    os.remove('prgm2.exe')
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument('command', choices=commands, nargs='?')
 parser.add_argument('--version', '-ver', action='version', version=VERSION)

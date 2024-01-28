@@ -19,4 +19,4 @@ def download():
     content = requests.get(HREF_DOWNLOAD)
     with open('prgm.exe', 'wb') as f:
         f.write(content.content)
-    os.system('prgm.exe delete --file prgm2.exe')
+
