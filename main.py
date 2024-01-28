@@ -4,13 +4,14 @@ import random
 import sys
 import string
 from termcolor import colored
+import textwrap
 
 import constants
 from utils import main as generate_meme
 from constants import *
 from updater import check_update, download
 
-commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete']
+commands = ['randstr', 'mkmem', 'newns', 'sort', 'delete', 'form']
 
 if 'prgm2.exe' in os.listdir('\\'.join(sys.executable.split('\\')[:-1])):
     os.remove('\\'.join(sys.executable.split('\\')[:-1]) + '\\' + 'prgm2.exe')
@@ -105,3 +106,14 @@ elif args.command == 'delete':
     parser.add_argument('--file', '-f')
     args = parser.parse_args(sys.argv[2:])
     os.remove(args.file)
+
+elif args.command == 'form':
+    parser = argparse.ArgumentParser(description='forming text in file')
+    parser.add_argument('--width', '-w', default=50, type=int)
+    parser.add_argument('file')
+    args = parser.parse_args(sys.argv[2:])
+    with open(args.file, 'r', encoding='utf-8') as f:
+        data = f.read()
+    data = textwrap.fill(data, width=args.width)
+    with open(args.file, 'w', encoding='utf-8') as f:
+        f.write(data)
